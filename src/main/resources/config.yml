@@ -1,3 +1,7 @@
+freecam:
+  enabled: true
+  kick-message: "<red>Freecam is not allowed</red>"
+
 messages:
   actor-name: "itzglecni"
 
