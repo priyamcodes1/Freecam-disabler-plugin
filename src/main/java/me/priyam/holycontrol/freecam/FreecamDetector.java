@@ -22,7 +22,7 @@ public class FreecamDetector implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
-        // bypass list
+        // ✅ BYPASS WORKS HERE
         if (config.isBypassed(player.getName())) return;
 
         if (!config.isFreecamAllowed()) {
