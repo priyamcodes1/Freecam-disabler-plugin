@@ -1,8 +1,7 @@
 package me.priyam.holycontrol.pvp;
 
 import me.priyam.holycontrol.HolyControl;
-import org.bukkit.event.Listener;
-import org.bukkit.event.EventHandler;
+import org.bukkit.event.*;
 import org.bukkit.event.entity.EntityDamageByEntityEvent;
 import org.bukkit.entity.Player;
 
