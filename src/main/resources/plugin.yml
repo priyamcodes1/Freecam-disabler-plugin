@@ -2,9 +2,12 @@ name: HolyControl
 version: 1.0
 main: me.priyam.holycontrol.HolyControl
 api-version: 1.21
+depend: [ProtocolLib]
 
 commands:
   pvp:
     usage: /pvp <on|off>
   holyfreeze:
     usage: /holyfreeze <on|off>
+  holycontrol:
+    usage: /holycontrol reload
