@@ -2,7 +2,6 @@ package me.priyam.holycontrol.freecam;
 
 import me.priyam.holycontrol.HolyControl;
 import me.priyam.holycontrol.config.ConfigManager;
-import net.kyori.adventure.text.Component;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,11 +22,14 @@ public class FreecamDetector implements Listener {
     public void onJoin(PlayerJoinEvent event) {
         Player player = event.getPlayer();
 
+        // bypass list
+        if (config.isBypassed(player.getName())) return;
+
         if (!config.isFreecamAllowed()) {
             new BukkitRunnable() {
                 @Override
                 public void run() {
-                    player.kick(Component.text(config.getFreecamKickMessage()));
+                    player.kick(config.getKickMessage());
                 }
             }.runTaskLater(plugin, 1L);
         }
