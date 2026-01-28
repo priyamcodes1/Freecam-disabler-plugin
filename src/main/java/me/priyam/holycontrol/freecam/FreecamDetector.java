@@ -1,7 +1,5 @@
 package me.priyam.holycontrol.freecam;
 
-import com.comphenix.protocol.*;
-import com.comphenix.protocol.events.*;
 import net.kyori.adventure.text.Component;
 import me.priyam.holycontrol.HolyControl;
 import me.priyam.holycontrol.config.ConfigManager;
