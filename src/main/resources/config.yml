@@ -1,0 +1,5 @@
+freecam:
+  enabled: true
+  join-delay-ticks: 5
+  kick-message: "Freecam is not allowed"
+  bypass-permission: "holycontrol.freecam.bypass"
