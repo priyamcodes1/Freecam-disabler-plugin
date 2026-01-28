@@ -4,15 +4,21 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public class ConfigManager {
 
-    public static boolean FREECAM_ENABLED;
-    public static int JOIN_DELAY;
-    public static String KICK_MESSAGE;
-    public static String BYPASS_PERMISSION;
+    private final JavaPlugin plugin;
 
-    public static void load(JavaPlugin plugin) {
-        FREECAM_ENABLED = plugin.getConfig().getBoolean("freecam.enabled");
-        JOIN_DELAY = plugin.getConfig().getInt("freecam.join-delay-ticks");
-        KICK_MESSAGE = plugin.getConfig().getString("freecam.kick-message");
-        BYPASS_PERMISSION = plugin.getConfig().getString("freecam.bypass-permission");
+    public ConfigManager(JavaPlugin plugin) {
+        this.plugin = plugin;
+        plugin.saveDefaultConfig();
+    }
+
+    public boolean isFreecamAllowed() {
+        return plugin.getConfig().getBoolean("freecam.allow", false);
+    }
+
+    public String getFreecamKickMessage() {
+        return plugin.getConfig().getString(
+                "freecam.kick-message",
+                "Freecam is not allowed"
+        );
     }
 }
