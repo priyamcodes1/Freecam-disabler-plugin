@@ -1,32 +1,37 @@
 package me.priyam.holycontrol.freeze;
 
 import me.priyam.holycontrol.HolyControl;
-import org.bukkit.event.*;
-import org.bukkit.event.player.*;
-import org.bukkit.event.block.*;
-import org.bukkit.Location;
+import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
+import org.bukkit.event.block.BlockBreakEvent;
+import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.player.PlayerInteractEvent;
+import org.bukkit.event.player.PlayerMoveEvent;
 
 public class FreezeListener implements Listener {
 
     @EventHandler
-    public void onMove(PlayerMoveEvent e) {
-        if (!HolyControl.FREEZE_ENABLED) return;
-        Location f = e.getFrom(), t = e.getTo();
-        t.setX(f.getX());
-        t.setY(f.getY());
-        t.setZ(f.getZ());
-        e.setTo(t);
+    public void onMove(PlayerMoveEvent event) {
+        if (HolyControl.FREEZE_ENABLED) {
+            if (event.getFrom().getX() != event.getTo().getX()
+                    || event.getFrom().getZ() != event.getTo().getZ()) {
+                event.setCancelled(true);
+            }
+        }
     }
 
-    @EventHandler public void onBreak(BlockBreakEvent e) {
-        if (HolyControl.FREEZE_ENABLED) e.setCancelled(true);
+    @EventHandler
+    public void onBreak(BlockBreakEvent event) {
+        if (HolyControl.FREEZE_ENABLED) event.setCancelled(true);
     }
 
-    @EventHandler public void onPlace(BlockPlaceEvent e) {
-        if (HolyControl.FREEZE_ENABLED) e.setCancelled(true);
+    @EventHandler
+    public void onPlace(BlockPlaceEvent event) {
+        if (HolyControl.FREEZE_ENABLED) event.setCancelled(true);
     }
 
-    @EventHandler public void onInteract(PlayerInteractEvent e) {
-        if (HolyControl.FREEZE_ENABLED) e.setCancelled(true);
+    @EventHandler
+    public void onInteract(PlayerInteractEvent event) {
+        if (HolyControl.FREEZE_ENABLED) event.setCancelled(true);
     }
 }
