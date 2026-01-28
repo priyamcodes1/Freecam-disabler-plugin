@@ -1,3 +1,10 @@
-freecam:
-  allow: false
-  kick-message: "<gray>Please remove <yellow>Freecam</yellow> before joining the server.</gray>"
+messages:
+  actor-name: "itzglecni"
+
+pvp:
+  enabled-message: "<red>PvP is enabled</red>"
+  disabled-message: "<green>PvP is disabled</green>"
+
+holyfreeze:
+  enabled-message: "<red><actor> freezed all the players</red>"
+  disabled-message: "<green><actor> unfreezed all the players</green>"
