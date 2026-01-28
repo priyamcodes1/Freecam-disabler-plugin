@@ -4,6 +4,7 @@ import me.priyam.holycontrol.commands.HolyFreezeCommand;
 import me.priyam.holycontrol.commands.PvPCommand;
 import me.priyam.holycontrol.commands.ToggleTabCompleter;
 import me.priyam.holycontrol.config.ConfigManager;
+import me.priyam.holycontrol.freecam.FreecamDetector;
 import me.priyam.holycontrol.freeze.FreezeListener;
 import me.priyam.holycontrol.pvp.PvPListener;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -19,6 +20,7 @@ public class HolyControl extends JavaPlugin {
     public void onEnable() {
         this.config = new ConfigManager(this);
 
+        getServer().getPluginManager().registerEvents(new FreecamDetector(this), this);
         getServer().getPluginManager().registerEvents(new PvPListener(), this);
         getServer().getPluginManager().registerEvents(new FreezeListener(), this);
 
