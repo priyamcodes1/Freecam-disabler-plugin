@@ -1,7 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
-         http://maven.apache.org/xsd/maven-4.0.0.xsd">
+                             https://maven.apache.org/xsd/maven-4.0.0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
 
@@ -17,15 +18,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-<repositories>
-    <repository>
-        <id>papermc</id>
-        <url>https://repo.papermc.io/repository/maven-public/</url>
-    </repository>
-</repositories>
-
+    <!-- Paper repo ONLY -->
+    <repositories>
+        <repository>
+            <id>papermc</id>
+            <url>https://repo.papermc.io/repository/maven-public/</url>
+        </repository>
+    </repositories>
 
     <dependencies>
+
         <!-- Paper API -->
         <dependency>
             <groupId>io.papermc.paper</groupId>
@@ -34,21 +36,20 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- ProtocolLib -->
-<dependency>
-    <groupId>com.comphenix.protocol</groupId>
-    <artifactId>ProtocolLib</artifactId>
-    <version>5.2.0</version>
-    <scope>provided</scope>
-</dependency>
+        <!-- ProtocolLib (DO NOT SHADE, PROVIDED ONLY) -->
+        <dependency>
+            <groupId>com.comphenix.protocol</groupId>
+            <artifactId>ProtocolLib</artifactId>
+            <version>5.2.0</version>
+            <scope>provided</scope>
+        </dependency>
 
     </dependencies>
 
     <build>
-        <finalName>HolyControl</finalName>
-
         <plugins>
-            <!-- Java 21 -->
+
+            <!-- Java 21 compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -59,20 +60,13 @@
                 </configuration>
             </plugin>
 
-            <!-- Shade (safe even if not shading deps) -->
+            <!-- Build plain plugin JAR -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-shade-plugin</artifactId>
-                <version>3.5.1</version>
-                <executions>
-                    <execution>
-                        <phase>package</phase>
-                        <goals>
-                            <goal>shade</goal>
-                        </goals>
-                    </execution>
-                </executions>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>3.4.1</version>
             </plugin>
+
         </plugins>
     </build>
 
